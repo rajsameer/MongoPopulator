@@ -19,7 +19,8 @@ const collections = ['CDR_Health_Middleware','CDR_Health_MongoDB','CDR_Health_Pr
 
 
 const main = async () => {
-    const mongoIP = await getMongoIP();
+   // const mongoIP = await getMongoIP();
+   const mongoIP = '127.0.0.1:27017';
     mongoIP.indexOf("undefined")> -1? MongoEvents.emit('error',`Conductor returned an invalid IP:${mongoIP}. Its seems there are no healthy secondaries in system`): true;
     const mongoURI = `mongodb://${mongoUser}:${mongoPassword}@`+mongoIP+`/admin?authMechanism=SCRAM-SHA-1`;
     const mongoClient = await mongoDb.connect(mongoURI, { useNewUrlParser: true, poolSize: collections.length ,useUnifiedTopology: true});
@@ -38,72 +39,72 @@ const main = async () => {
                 case "CDR_Health_Middleware":
                      docs  = CDR_Health_Middleware.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_Middleware").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Middleware"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Middleware"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_MongoDB":
                      docs  = CDR_Health_MongoDB.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_MongoDB").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_MongoDB"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_MongoDB"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_Processing":
                      docs  = CDR_Health_Processing.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_Processing").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Processing"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Processing"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_QRouter":
                      docs  = CDR_Health_QRouter.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_QRouter").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_QRouter"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_QRouter"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_Vertica":
                      docs  = CDR_Health_Vertica.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_Vertica").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Vertica"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Vertica"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true}).
-                    then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_vProbe":
                      docs  = CDR_Health_vProbe.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_vProbe").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_vProbe"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_vProbe"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_vLBAgent":
                      docs  = CDR_Health_vLBAgent.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_vLBAgent").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_vLBAgent"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_vLBAgent"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_vLB":
                      docs  = CDR_Health_vLB.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_vLB").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_vLB"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_vLB"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_QLoader":
                      docs  = CDR_Health_QLoader.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_QLoader").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_QLoader"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_QLoader"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 case "CDR_Health_Daemon":
                      docs  = CDR_Health_Daemon.getDocs();
                     targetColletion.find(t => t.collectionName == "CDR_Health_Daemon").insertMany(docs.Mdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Daemon"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_Daemon"+" Lines:" +error.insertedCount): console.log(result));
                     targetColletion.find(t => t.collectionName == "CDR_Health_VM").insertMany(docs.VMdocs,{forceServerObjectId: true})
-                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +result.insertedCount): console.log(result));
+                    .then((error,result) => error? console.log(new Date().toUTCString() + "CDR_Health_VM"+" Lines:" +error.insertedCount): console.log(result));
                 break;
                 
 

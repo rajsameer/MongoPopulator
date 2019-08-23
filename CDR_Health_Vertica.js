@@ -44,8 +44,8 @@ module.exports.getDocs = () => {
     const docs = [];
     const VMdocs = [];
     for(let i = 0; i < unique; i++){
-        const Mdoc = new Object(document);
-        const VMdoc = new Object(CDR_Health_VM);
+        const Mdoc = new Object({},document);
+        const VMdoc = new Object({},CDR_Health_VM);
         Mdoc.MachineIP = 'IP'+i;
         Mdoc.MachineName = Mdoc.MachineName + i;
        // Mdoc.MachineType = 'randomMiddle';

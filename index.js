@@ -19,7 +19,7 @@ const collections = ['CDR_Health_Middleware','CDR_Health_MongoDB','CDR_Health_Pr
 
 
 const main = async () => {
-    const mongoIP = '127.0.0.1:27017';
+    const mongoIP = await getMongoIP();
     mongoIP.indexOf("undefined")> -1? MongoEvents.emit('error',`Conductor returned an invalid IP:${mongoIP}. Its seems there are no healthy secondaries in system`): true;
     const mongoURI = `mongodb://${mongoUser}:${mongoPassword}@`+mongoIP+`/admin?authMechanism=SCRAM-SHA-1`;
     const mongoClient = await mongoDb.connect(mongoURI, { useNewUrlParser: true, poolSize: collections.length ,useUnifiedTopology: true});

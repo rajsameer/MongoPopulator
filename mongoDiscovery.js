@@ -52,6 +52,7 @@ const getMongoPrimary = async () => {
     //});
     //replica connection test
     const mongoBeIPs = ['10.20.4.24:27017', '10.20.4.23:27017', '10.20.4.22:27017'];
+    //const mongoBeIPs = ['127.0.0.1:27017'];
     const connectPromises = [];
     mongoBeIPs.forEach((ip) => {
         connectPromises.push(mongoConnectTest(ip));

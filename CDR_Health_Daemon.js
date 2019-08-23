@@ -1,5 +1,5 @@
 const CDR_Health_VM = require('./CDR_Health_VM.js').document;
-module.exports.document  ={
+const document  ={
     "UpTime" : 183421986,
     "CollectionType" : "CDR_Health_Daemon",
     "StartTime" : 1566492421106,
@@ -1689,7 +1689,7 @@ module.exports.document  ={
     "StartTimeDisplay" : "2019-08-22T16:47:01.106Z",
     "UpTimeDisplay" : "1970-01-03T02:57:01.986Z"
 }
-const unique = 20
+const unique = 100
 module.exports.getDocs = () => {
     const docs = [];
     const VMdocs = [];

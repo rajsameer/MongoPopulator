@@ -1,5 +1,5 @@
 const CDR_Health_VM = require('./CDR_Health_VM.js').document;
-module.exports.document = {
+const document = {
     "UpTime" : 1270461665,
     "CollectionType" : "CDR_Health_QLoader",
     "StartTime" : 1566492405865,
@@ -957,7 +957,7 @@ module.exports.document = {
         }
     }
 }
-const unique = 20
+const unique = 100
 module.exports.getDocs = () => {
     const docs = [];
     const VMdocs = [];

@@ -78,7 +78,7 @@ const document = {
     "UpTimeDisplay" : "1970-01-01T00:13:23.933Z"
 }
 
-const unique = 20
+const unique = 7
 module.exports.getDocs = () => {
     const docs = [];
     const VMdocs = [];

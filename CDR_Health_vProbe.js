@@ -1,5 +1,5 @@
 const CDR_Health_VM = require('./CDR_Health_VM.js').document;
-module.exports.document = {
+const document = {
     "AverageCpuUsage" : 28,
     "BearerHashFailedToInsert" : 0,
     "BearerHashUtilization" : 0.0,
@@ -60,7 +60,7 @@ module.exports.document = {
     "FullUserPlanFailedToSaveBps" : 0,
     "FullUserPlanSavedBps" : 0,
     "FullUserPlanStorageUsage" : 1,
-    "GnGiCorrelationRate" : null,
+    "GnGiCorrelationRate" : 0.3,
     "GnGiCorrelationRateLast10K" : 0.0,
     "Immediate" : false,
     "KasmeHashFailedToInsert" : 0,
@@ -261,7 +261,7 @@ module.exports.document = {
     "StartTimeDisplay" : "2019-08-22T16:44:00.075Z",
     "UpTimeDisplay" : "2019-08-01T18:32:42.636Z"
 }
-const unique = 20
+const unique = 2000
 module.exports.getDocs = () => {
     const docs = [];
     const VMdocs = [];

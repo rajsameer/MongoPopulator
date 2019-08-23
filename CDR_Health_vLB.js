@@ -1,5 +1,5 @@
 const CDR_Health_VM = require('./CDR_Health_VM.js').document;
-module.exports.document = {
+const document = {
     "AverageCpuUsage" : 77,
     "CaptureDropsPps" : 0,
     "CollectionType" : "CDR_Health_vLB",
@@ -58,7 +58,7 @@ module.exports.document = {
     "StartTimeDisplay" : "2019-08-22T16:46:00.097Z",
     "UpTimeDisplay" : "2019-08-20T16:55:15.540Z"
 }
-const unique = 20
+const unique = 1000
 module.exports.getDocs = () => {
     const docs = [];
     const VMdocs = [];
